@@ -50,7 +50,7 @@ def task2():
     plt.style.use('seaborn-poster')
     # generate x and y
     x = np.linspace(0, 1, 101)
-    y = datetime.datetime.now().second + x**3 + x * np.random.random(len(x)) #
+    y = datetime.datetime.now().second + x**3 + x * np.random.random(len(x))
 
     # assemble matrix A
     # объединение подмассивов в матрицу
