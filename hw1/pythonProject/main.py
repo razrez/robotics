@@ -50,7 +50,7 @@ def task2():
     plt.style.use('seaborn-poster')
     # generate x and y
     x = np.linspace(0, 1, 101)
-    y = datetime.datetime.now().second + x**2 + x * np.random.random(len(x))
+    y = datetime.datetime.now().second + x**3 + x * np.random.random(len(x)) #
 
     # assemble matrix A
     # объединение подмассивов в матрицу
@@ -70,7 +70,7 @@ def task2():
     # plot the results
     plt.figure(figsize=(10, 8))
     plt.plot(x, y, 'b.')
-    plt.plot(x, alpha[0] * x + alpha[1], 'r')
+    plt.plot(x, alpha[0] * x**3 + alpha[1], 'r')
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
