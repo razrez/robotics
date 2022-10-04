@@ -85,10 +85,9 @@ if __name__ == '__main__':
 
     # Home work 2: Create simplified recursive filter and compare its results with 1D Kalman filter
     xRec = np.zeros(N + 1)
-    xRec[0] = x[0]
+    recMean = np.zeros(N + 1) #recursive mean
     for k in range(1, N + 1):
-        xRec[k] = (1 - K[k]) * x[k - 1] + K[k] * z[k]
-
+        xRec[k] = (1 - 0.6) * xRec[k - 1] + 0.6 * x[k]
     plt.title('Comparing Recursive and Kalman Filtering', fontsize=15)
     plt.xlabel('time', fontsize=12)
     plt.ylabel('x coordinate', fontsize=12)
@@ -99,7 +98,3 @@ if __name__ == '__main__':
     plt.legend()
     saveplot('compare_recursive_and_kalman.png')
     plt.show()
-
-    # вывод рекрусионной фильрации :
-    # данные модели достаточно пренебрегаются, так как
-    # коэффициент K(Kalman Gain) из-за зашумленности близок к 0
