@@ -27,6 +27,7 @@ if __name__ == '__main__':
 
     a = 0.1  # ускорение
     # нулевые массивы значения координат
+    # данные модели
     x = np.zeros(N + 1)
 
     # имитация данных сенсора
@@ -84,8 +85,9 @@ if __name__ == '__main__':
 
     # Home work 2: Create simplified recursive filter and compare its results with 1D Kalman filter
     xRec = np.zeros(N + 1)
+    xRec[0] = x[0]
     for k in range(1, N + 1):
-        xRec[k] = (1 - K[k]) * xRec[k - 1] + K[k] * z[k]
+        xRec[k] = (1 - K[k]) * x[k - 1] + K[k] * z[k]
 
     plt.title('Comparing Recursive and Kalman Filtering', fontsize=15)
     plt.xlabel('time', fontsize=12)
