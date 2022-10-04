@@ -92,7 +92,10 @@ if __name__ == '__main__':
     plt.plot(time, z, 'g', label='noisy sensor data')
     plt.plot(time, xOpt, 'r', label='Kalman Filter output')
     plt.plot(time, xRec, 'orange', label='Recursive Filter output')
-    saveplot('compare_recursive_and_kalman.png')
     plt.legend()
+    saveplot('compare_recursive_and_kalman.png')
     plt.show()
-    # вывод: сенсорным данным слабо доверяем, так как коэффициент K(Kalman Gain) из-за зашумленности близок к 0
+
+    # вывод рекрусионной фильрации :
+    # сенсорным данным слабо доверяем, так как
+    # коэффициент K(Kalman Gain) из-за зашумленности близок к 0
