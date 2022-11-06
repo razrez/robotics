@@ -16,9 +16,11 @@ def draw_circle(event, x, y, flags, params):
 
 img_wrap = cv2.imread('cards.jpg')
 
-while (1):
+while True:
+
     cv2.imshow('orig', img_wrap)
     cv2.setMouseCallback('orig', draw_circle)
+
     if counter == 4:
         height, width = 350, 250
         pts1 = np.float32([circles[0], circles[1], circles[2], circles[3]])
