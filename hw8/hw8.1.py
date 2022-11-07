@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-circles = np.zeros((4, 2), np.int)
+circles = np.zeros((4, 2), np.int32)
 counter = 0
 
 
@@ -14,7 +14,7 @@ def draw_circle(event, x, y, flags, params):
         print(circles)
 
 
-img_wrap = cv2.imread('cards.jpg')
+img_wrap = cv2.imread('sourcePics/cards.jpg')
 
 while True:
 
