@@ -46,5 +46,5 @@ while True:
 
             # save your route map
             cv2.imwrite('myRouteMap.png', streetMap)
-
         break
+cv2.destroyAllWindows()

@@ -13,6 +13,7 @@ def draw_circle(event, x, y, flags, params):
         cv2.circle(picArea, (x, y), 3, (255, 255, 0), -1)
         print(circles)
 
+
 picArea = cv2.imread('sourcePics/pick_area.jpg')
 
 while True:
@@ -28,14 +29,12 @@ while True:
         imgOut = cv2.warpPerspective(picArea, matrix, (width, height))
         cv2.imshow("Out", imgOut)
 
-    k = cv2.waitKey(20) & 0xFF  # stop on ESC
+    k = cv2.waitKey(20) & 0xFF  # stop on ESC and start video!
     if k == 27:
         break
 cv2.destroyAllWindows()
 
-
 video = cv2.VideoCapture('sourcePics/video.MOV')
-# output = cv2.VideoWriter(('sourcePics/video.MOV'),cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 20, frame_size)
 if not video.isOpened():
     print("error openning")
 else:

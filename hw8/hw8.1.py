@@ -32,3 +32,5 @@ while True:
     k = cv2.waitKey(20) & 0xFF  # stop on ESC
     if k == 27:
         break
+
+cv2.destroyAllWindows()
