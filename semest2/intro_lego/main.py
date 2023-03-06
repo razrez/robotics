@@ -49,10 +49,10 @@ PROPORTIONAL_GAIN = 1.2
 KP = 1.7
 
 # rapid delta speed
-KD = 40
+KD = 30
 
 # stability koef
-KI = 0.03
+KI = 0.005
 
 prev_err = 0
 sum_int = 0
@@ -84,7 +84,7 @@ while True:
     
     # don't let the robot spinning around
     if turn_rate < -200:
-        #ev3.speaker.beep()
+        # ev3.speaker.beep()
         prev_err = 0
         sum_int = 0
         turn_rate = 0
