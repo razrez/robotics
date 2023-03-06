@@ -30,12 +30,12 @@ line_sensor = ColorSensor(Port.S3)
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
 # Calculate the light threshold/SET_POINT. Choose values based on your measurements.
-BLACK = 4
-WHITE = 57
+BLACK = 2
+WHITE = 61
 threshold = (BLACK + WHITE) / 2
 
 # Set the drive speed at 100 millimeters per second.
-DRIVE_SPEED = 70
+DRIVE_SPEED = 100
 
 # Set the gain of the proportional line controller. This means that for every
 # percentage point of light deviating from the threshold, we set the turn
@@ -45,14 +45,13 @@ DRIVE_SPEED = 70
 # steers at 10*1.2 = 12 degrees per second.
 PROPORTIONAL_GAIN = 1.2
 
-
 KP = 1.7
 
 # rapid delta speed
-KD = 30
+KD = 50
 
 # stability koef
-KI = 0.005
+KI = 0.0025
 
 prev_err = 0
 sum_int = 0
@@ -75,28 +74,27 @@ while True:
     #     turn_rate = KP * err + KI * sum_int + KD * (err - prev_err)
     # elif line_sensor.reflection() < 10:
     #     turn_rate = KP * err + KI * sum_int + KD * (err - prev_err) * (-1)
-    
 
     # ev3.screen.clear()
-    # ev3.screen.draw_text(0, 0, turn_rate)
     # ev3.screen.draw_text(0, 0, line_sensor.reflection())
+    # ev3.screen.draw_text(0, 0, turn_rate)
     # print(turn_rate)
-    
+
     # don't let the robot spinning around
-    if turn_rate < -200:
+    if turn_rate < -350:
         # ev3.speaker.beep()
         prev_err = 0
         sum_int = 0
         turn_rate = 0
         # search the edge of line to follow
         while threshold - line_sensor.reflection() < 0:
-            robot.drive(0, -50)
+            robot.drive(50, -70)
 
-    if delta_err > -8 and delta_err < 8:
-        DRIVE_SPEED = 100
+    if -8 < err < 8:
+        DRIVE_SPEED = 150
     else:
-        DRIVE_SPEED = 70
-        
+        DRIVE_SPEED = 100
+
     # Set the drive base speed and turn rate.
     robot.drive(DRIVE_SPEED, turn_rate)
 
