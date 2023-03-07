@@ -48,10 +48,10 @@ PROPORTIONAL_GAIN = 1.2
 KP = 1.7
 
 # rapid delta speed
-KD = 50
+KD = 60
 
 # stability koef
-KI = 0.0025
+KI = 0.005
 
 prev_err = 0
 sum_int = 0
@@ -81,14 +81,14 @@ while True:
     # print(turn_rate)
 
     # don't let the robot spinning around
-    if turn_rate < -350:
+    if turn_rate < -360:
         # ev3.speaker.beep()
         prev_err = 0
         sum_int = 0
         turn_rate = 0
         # search the edge of line to follow
         while threshold - line_sensor.reflection() < 0:
-            robot.drive(50, -70)
+            robot.drive(60, -70)
 
     if -8 < err < 8:
         DRIVE_SPEED = 150
